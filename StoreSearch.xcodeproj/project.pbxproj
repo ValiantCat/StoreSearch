@@ -13,6 +13,7 @@
 		7B3CAADA19DC2A8B00D2D8F7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B3CAAD919DC2A8B00D2D8F7 /* Images.xcassets */; };
 		7B3CAADD19DC2A8B00D2D8F7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B3CAADB19DC2A8B00D2D8F7 /* LaunchScreen.xib */; };
 		7B3CAAE919DC2A8B00D2D8F7 /* StoreSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3CAAE819DC2A8B00D2D8F7 /* StoreSearchTests.swift */; };
+		7B3CAAF319DC468800D2D8F7 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3CAAF219DC468800D2D8F7 /* SearchResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		7B3CAAE219DC2A8B00D2D8F7 /* StoreSearchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StoreSearchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B3CAAE719DC2A8B00D2D8F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B3CAAE819DC2A8B00D2D8F7 /* StoreSearchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreSearchTests.swift; sourceTree = "<group>"; };
+		7B3CAAF219DC468800D2D8F7 /* SearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				7B3CAAD919DC2A8B00D2D8F7 /* Images.xcassets */,
 				7B3CAADB19DC2A8B00D2D8F7 /* LaunchScreen.xib */,
 				7B3CAAD019DC2A8B00D2D8F7 /* Supporting Files */,
+				7B3CAAF219DC468800D2D8F7 /* SearchResult.swift */,
 			);
 			path = StoreSearch;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B3CAAD519DC2A8B00D2D8F7 /* SearchViewController.swift in Sources */,
+				7B3CAAF319DC468800D2D8F7 /* SearchResult.swift in Sources */,
 				7B3CAAD319DC2A8B00D2D8F7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
