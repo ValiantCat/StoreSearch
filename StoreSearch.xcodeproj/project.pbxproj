@@ -14,6 +14,9 @@
 		7B3CAADD19DC2A8B00D2D8F7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B3CAADB19DC2A8B00D2D8F7 /* LaunchScreen.xib */; };
 		7B3CAAE919DC2A8B00D2D8F7 /* StoreSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3CAAE819DC2A8B00D2D8F7 /* StoreSearchTests.swift */; };
 		7B3CAAF319DC468800D2D8F7 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3CAAF219DC468800D2D8F7 /* SearchResult.swift */; };
+		7B3CAAF519DD31F900D2D8F7 /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B3CAAF419DD31F900D2D8F7 /* SearchResultCell.xib */; };
+		7B3CAAF719DD66B700D2D8F7 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3CAAF619DD66B700D2D8F7 /* SearchResultCell.swift */; };
+		7B3CAAF919DD6AEA00D2D8F7 /* NothingFoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B3CAAF819DD6AEA00D2D8F7 /* NothingFoundCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +41,9 @@
 		7B3CAAE719DC2A8B00D2D8F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B3CAAE819DC2A8B00D2D8F7 /* StoreSearchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreSearchTests.swift; sourceTree = "<group>"; };
 		7B3CAAF219DC468800D2D8F7 /* SearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
+		7B3CAAF419DD31F900D2D8F7 /* SearchResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultCell.xib; sourceTree = "<group>"; };
+		7B3CAAF619DD66B700D2D8F7 /* SearchResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
+		7B3CAAF819DD6AEA00D2D8F7 /* NothingFoundCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NothingFoundCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,12 +86,15 @@
 			isa = PBXGroup;
 			children = (
 				7B3CAAD219DC2A8B00D2D8F7 /* AppDelegate.swift */,
-				7B3CAAD419DC2A8B00D2D8F7 /* SearchViewController.swift */,
-				7B3CAAD619DC2A8B00D2D8F7 /* Main.storyboard */,
 				7B3CAAD919DC2A8B00D2D8F7 /* Images.xcassets */,
 				7B3CAADB19DC2A8B00D2D8F7 /* LaunchScreen.xib */,
-				7B3CAAD019DC2A8B00D2D8F7 /* Supporting Files */,
+				7B3CAAD619DC2A8B00D2D8F7 /* Main.storyboard */,
+				7B3CAAF819DD6AEA00D2D8F7 /* NothingFoundCell.xib */,
 				7B3CAAF219DC468800D2D8F7 /* SearchResult.swift */,
+				7B3CAAF619DD66B700D2D8F7 /* SearchResultCell.swift */,
+				7B3CAAF419DD31F900D2D8F7 /* SearchResultCell.xib */,
+				7B3CAAD419DC2A8B00D2D8F7 /* SearchViewController.swift */,
+				7B3CAAD019DC2A8B00D2D8F7 /* Supporting Files */,
 			);
 			path = StoreSearch;
 			sourceTree = "<group>";
@@ -197,6 +206,8 @@
 			files = (
 				7B3CAAD819DC2A8B00D2D8F7 /* Main.storyboard in Resources */,
 				7B3CAADD19DC2A8B00D2D8F7 /* LaunchScreen.xib in Resources */,
+				7B3CAAF519DD31F900D2D8F7 /* SearchResultCell.xib in Resources */,
+				7B3CAAF919DD6AEA00D2D8F7 /* NothingFoundCell.xib in Resources */,
 				7B3CAADA19DC2A8B00D2D8F7 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -217,6 +228,7 @@
 			files = (
 				7B3CAAD519DC2A8B00D2D8F7 /* SearchViewController.swift in Sources */,
 				7B3CAAF319DC468800D2D8F7 /* SearchResult.swift in Sources */,
+				7B3CAAF719DD66B700D2D8F7 /* SearchResultCell.swift in Sources */,
 				7B3CAAD319DC2A8B00D2D8F7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -409,6 +421,7 @@
 				7B3CAAEE19DC2A8B00D2D8F7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7B3CAAEF19DC2A8B00D2D8F7 /* Build configuration list for PBXNativeTarget "StoreSearchTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +430,7 @@
 				7B3CAAF119DC2A8B00D2D8F7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
