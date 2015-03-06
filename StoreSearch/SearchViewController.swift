@@ -15,23 +15,26 @@ class SearchViewController: UIViewController {
 
   var searchResults = [SearchResult]()
   var hasSearched = false
-
+  var isLoading = false
   struct TableViewCellIdentifiers {
     static let searchResultCell = "SearchResultCell"
     static let nothingFoundCell = "NothingFoundCell"
+    static let loadingCell = "LoadingCell"
   }
 
   override func viewDidLoad() {
     super.viewDidLoad()
+            //        tableVuew往下走64
     tableView.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 0, right: 0)
     tableView.rowHeight = 80
-    
+    //        注册tableView cell
     var cellNib = UINib(nibName: TableViewCellIdentifiers.searchResultCell, bundle: nil)
     tableView.registerNib(cellNib, forCellReuseIdentifier: TableViewCellIdentifiers.searchResultCell)
 
     cellNib = UINib(nibName: TableViewCellIdentifiers.nothingFoundCell, bundle: nil)
     tableView.registerNib(cellNib, forCellReuseIdentifier: TableViewCellIdentifiers.nothingFoundCell)
-    
+    cellNib = UINib(nibName: TableViewCellIdentifiers.loadingCell, bundle: nil)
+    tableView.registerNib(cellNib, forCellReuseIdentifier: TableViewCellIdentifiers.loadingCell)
     searchBar.becomeFirstResponder()
   }
 
@@ -39,18 +42,18 @@ class SearchViewController: UIViewController {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
   }
-
+//    MARK:  获取url
   func urlWithSearchText(searchText: String) -> NSURL {
     let escapedSearchText = searchText.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
-    
-    let urlString = String(format: "http://itunes.apple.com/search?term=%@", escapedSearchText)
-    let url = NSURL(string: urlString)
-    return url
-  }
 
+    let urlString = String(format: "http://itunes.apple.com/search?term=%@&limit=200", escapedSearchText)
+    let url = NSURL(string: urlString)
+    return url!
+  }
+//    MARK: 获取json  string
   func performStoreRequestWithURL(url: NSURL) -> String? {
     var error: NSError?
-    if let resultString = String.stringWithContentsOfURL(url, encoding: NSUTF8StringEncoding, error: &error) {
+    if let resultString = String(contentsOfURL: url, encoding: NSUTF8StringEncoding, error: &error) {
       return resultString
     } else if let error = error {
       println("Download Error: \(error)")
@@ -127,7 +130,7 @@ class SearchViewController: UIViewController {
     searchResult.currency = dictionary["currency"] as NSString
     
     if let price = dictionary["trackPrice"] as? NSNumber {
-      searchResult.price = price
+      searchResult.price = Double(price)
     }
     if let genre = dictionary["primaryGenreName"] as? NSString {
       searchResult.genre = genre
@@ -146,7 +149,7 @@ class SearchViewController: UIViewController {
     searchResult.currency = dictionary["currency"] as NSString
     
     if let price = dictionary["collectionPrice"] as? NSNumber {
-      searchResult.price = price
+      searchResult.price = Double(price)
     }
     if let genre = dictionary["primaryGenreName"] as? NSString {
       searchResult.genre = genre
@@ -165,7 +168,7 @@ class SearchViewController: UIViewController {
     searchResult.currency = dictionary["currency"] as NSString
     
     if let price = dictionary["price"] as? NSNumber {
-      searchResult.price = price
+      searchResult.price = Double(price)
     }
     if let genre = dictionary["primaryGenreName"] as? NSString {
       searchResult.genre = genre
@@ -184,7 +187,7 @@ class SearchViewController: UIViewController {
     searchResult.currency = dictionary["currency"] as NSString
     
     if let price = dictionary["price"] as? NSNumber {
-      searchResult.price = price
+      searchResult.price = Double(price)
     }
     if let genres: AnyObject = dictionary["genres"] {
       searchResult.genre = ", ".join(genres as [String])
@@ -207,7 +210,7 @@ class SearchViewController: UIViewController {
     default: return kind
     }
   }
-
+//    MARK: - 网络错误
   func showNetworkError() {
     let alert = UIAlertController(
       title: "Whoops...",
@@ -220,31 +223,50 @@ class SearchViewController: UIViewController {
     presentViewController(alert, animated: true, completion: nil)
   }
 }
-
+// MARK:  - searchBar delegate
 extension SearchViewController: UISearchBarDelegate {
+            //    MARK: 点击搜索
   func searchBarSearchButtonClicked(searchBar: UISearchBar) {
     if !searchBar.text.isEmpty {
       searchBar.resignFirstResponder()
-      
+      isLoading = true
+        tableView.reloadData()
       hasSearched = true
       searchResults = [SearchResult]()
       
-      let url = urlWithSearchText(searchBar.text)
-      
-      if let jsonString = performStoreRequestWithURL(url) {
-        if let dictionary = parseJSON(jsonString) {
-          searchResults = parseDictionary(dictionary)
-          searchResults.sort(<)
-          
-          tableView.reloadData()
-          return
-        }
-      }
+        
+//        ASYNC  GCD
+        let  queue = dispatch_get_global_queue(0, 0);
+        dispatch_async(queue, { () -> Void in
+                  let url = self.urlWithSearchText(searchBar.text)
+            
+                  if let jsonString = self.performStoreRequestWithURL(url) {
+                    if let dictionary = self.parseJSON(jsonString) {
+                      self.searchResults = self.parseDictionary(dictionary)
+                      self.searchResults.sort(<)
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            self.isLoading = false
+                            self.tableView.reloadData()
+                        })
+                       
+                      return
+                    }
+                  }
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.showNetworkError()
+                
+            })
+        })
+        
+        
+        
+        
 
-      showNetworkError()
+
+    
     }
   }
-
+        //    MARK searchBar 的状态栏上移
   func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
     return .TopAttached
   }
@@ -252,7 +274,9 @@ extension SearchViewController: UISearchBarDelegate {
 
 extension SearchViewController: UITableViewDataSource {
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    if !hasSearched {
+    if isLoading {
+        return 1
+    } else if !hasSearched {
       return 0
     } else if searchResults.count == 0 {
       return 1
@@ -260,9 +284,15 @@ extension SearchViewController: UITableViewDataSource {
       return searchResults.count
     }
   }
-  
+  //MARK：- tableView DataSource
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    if searchResults.count == 0 {
+    
+    if isLoading {
+        let cell = tableView.dequeueReusableCellWithIdentifier(TableViewCellIdentifiers.loadingCell, forIndexPath:indexPath) as UITableViewCell
+        let spinner = cell.viewWithTag(100) as UIActivityIndicatorView
+        spinner.startAnimating()
+        return cell
+    }else if searchResults.count == 0 {
       return tableView.dequeueReusableCellWithIdentifier(TableViewCellIdentifiers.nothingFoundCell, forIndexPath: indexPath) as UITableViewCell
       
     } else {
@@ -281,14 +311,14 @@ extension SearchViewController: UITableViewDataSource {
     }
   }
 }
-
+//MARK: - tableView Delegate
 extension SearchViewController: UITableViewDelegate {
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
   }
   
   func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-    if searchResults.count == 0 {
+    if searchResults.count == 0 || isLoading{
       return nil
     } else {
       return indexPath

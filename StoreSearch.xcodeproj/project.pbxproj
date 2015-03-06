@@ -17,6 +17,7 @@
 		7B3CAAF519DD31F900D2D8F7 /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B3CAAF419DD31F900D2D8F7 /* SearchResultCell.xib */; };
 		7B3CAAF719DD66B700D2D8F7 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3CAAF619DD66B700D2D8F7 /* SearchResultCell.swift */; };
 		7B3CAAF919DD6AEA00D2D8F7 /* NothingFoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B3CAAF819DD6AEA00D2D8F7 /* NothingFoundCell.xib */; };
+		CEF992071AA9A40D00D03E86 /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEF992061AA9A40D00D03E86 /* LoadingCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		7B3CAAF419DD31F900D2D8F7 /* SearchResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultCell.xib; sourceTree = "<group>"; };
 		7B3CAAF619DD66B700D2D8F7 /* SearchResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		7B3CAAF819DD6AEA00D2D8F7 /* NothingFoundCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NothingFoundCell.xib; sourceTree = "<group>"; };
+		CEF992061AA9A40D00D03E86 /* LoadingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 				7B3CAAF419DD31F900D2D8F7 /* SearchResultCell.xib */,
 				7B3CAAD419DC2A8B00D2D8F7 /* SearchViewController.swift */,
 				7B3CAAD019DC2A8B00D2D8F7 /* Supporting Files */,
+				CEF992061AA9A40D00D03E86 /* LoadingCell.xib */,
 			);
 			path = StoreSearch;
 			sourceTree = "<group>";
@@ -206,6 +209,7 @@
 			files = (
 				7B3CAAD819DC2A8B00D2D8F7 /* Main.storyboard in Resources */,
 				7B3CAADD19DC2A8B00D2D8F7 /* LaunchScreen.xib in Resources */,
+				CEF992071AA9A40D00D03E86 /* LoadingCell.xib in Resources */,
 				7B3CAAF519DD31F900D2D8F7 /* SearchResultCell.xib in Resources */,
 				7B3CAAF919DD6AEA00D2D8F7 /* NothingFoundCell.xib in Resources */,
 				7B3CAADA19DC2A8B00D2D8F7 /* Images.xcassets in Resources */,

@@ -1,5 +1,12 @@
 import Foundation
+/**
+比较函数
 
+:param: lhs 第一个
+:param: rhs 第二个
+
+:returns: 是否小于
+*/
 func < (lhs: SearchResult, rhs: SearchResult) -> Bool {
   return lhs.name.localizedStandardCompare(rhs.name) == NSComparisonResult.OrderedAscending
 }

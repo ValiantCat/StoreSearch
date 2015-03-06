@@ -12,7 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
-
+//    MARK:- 自定义主题
   func customizeAppearance() {
     let barTintColor = UIColor(red: 20/255, green: 160/255, blue: 160/255, alpha: 1)
     UISearchBar.appearance().barTintColor = barTintColor
