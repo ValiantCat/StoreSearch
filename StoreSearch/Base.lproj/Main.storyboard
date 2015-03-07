@@ -31,12 +31,35 @@
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="0IJ-3a-5gS"/>
                                 </connections>
                             </searchBar>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gko-wJ-CnS">
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                            </navigationBar>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2qv-u6-adA">
+                                <rect key="frame" x="150" y="72" width="300" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="ONz-mQ-DzM"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="所有"/>
+                                    <segment title="音乐"/>
+                                    <segment title="软件"/>
+                                    <segment title="图书"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentChanged:" destination="vXZ-lx-hvc" eventType="valueChanged" id="JK7-S0-xpq"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="V6E-UV-ASs" secondAttribute="bottom" id="2Hp-tk-j86"/>
+                            <constraint firstAttribute="trailing" secondItem="gko-wJ-CnS" secondAttribute="trailing" id="3qe-uP-4TV"/>
                             <constraint firstItem="2gB-Cc-lwJ" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="Aoz-GD-Dtr"/>
+                            <constraint firstItem="gko-wJ-CnS" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="Is4-Oa-TBu"/>
+                            <constraint firstItem="gko-wJ-CnS" firstAttribute="top" secondItem="2gB-Cc-lwJ" secondAttribute="bottom" id="NxG-by-N43"/>
+                            <constraint firstItem="2qv-u6-adA" firstAttribute="centerY" secondItem="gko-wJ-CnS" secondAttribute="centerY" id="PbR-g7-aff"/>
                             <constraint firstItem="2gB-Cc-lwJ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="ZcG-MM-KVF"/>
+                            <constraint firstAttribute="centerX" secondItem="2qv-u6-adA" secondAttribute="centerX" id="fMz-di-FX5"/>
                             <constraint firstItem="V6E-UV-ASs" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="g35-eY-nFr"/>
                             <constraint firstAttribute="trailing" secondItem="V6E-UV-ASs" secondAttribute="trailing" id="gg9-OL-EwL"/>
                             <constraint firstItem="V6E-UV-ASs" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="oue-x4-yFY"/>
@@ -45,6 +68,7 @@
                     </view>
                     <connections>
                         <outlet property="searchBar" destination="2gB-Cc-lwJ" id="ZyJ-ml-71s"/>
+                        <outlet property="segementControl" destination="2qv-u6-adA" id="3Xc-Ke-5AH"/>
                         <outlet property="tableView" destination="V6E-UV-ASs" id="Sqc-jC-n78"/>
                     </connections>
                 </viewController>

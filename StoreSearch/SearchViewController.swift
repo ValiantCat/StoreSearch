@@ -13,9 +13,11 @@ class SearchViewController: UIViewController {
   @IBOutlet weak var searchBar: UISearchBar!
   @IBOutlet weak var tableView: UITableView!
 
+    @IBOutlet weak var segementControl: UISegmentedControl!
   var searchResults = [SearchResult]()
   var hasSearched = false
   var isLoading = false
+  var dataTask:NSURLSessionDataTask?
   struct TableViewCellIdentifiers {
     static let searchResultCell = "SearchResultCell"
     static let nothingFoundCell = "NothingFoundCell"
@@ -24,8 +26,8 @@ class SearchViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-            //        tableVuew往下走64
-    tableView.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 0, right: 0)
+            //        tableVuew往下走108
+    tableView.contentInset = UIEdgeInsets(top: 108, left: 0, bottom: 0, right: 0)
     tableView.rowHeight = 80
     //        注册tableView cell
     var cellNib = UINib(nibName: TableViewCellIdentifiers.searchResultCell, bundle: nil)
@@ -43,28 +45,27 @@ class SearchViewController: UIViewController {
     // Dispose of any resources that can be recreated.
   }
 //    MARK:  获取url
-  func urlWithSearchText(searchText: String) -> NSURL {
+  func urlWithSearchText(searchText: String, category: Int) -> NSURL {
+    
+    var entityName: String
+    switch category {
+    case 1: entityName = "musicTrack"
+    case 2: entityName = "software"
+    case 3: entityName = "ebook"
+    default: entityName = ""
+    }
+    
     let escapedSearchText = searchText.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
 
-    let urlString = String(format: "http://itunes.apple.com/search?term=%@&limit=200", escapedSearchText)
+    let urlString = String(format: "http://itunes.apple.com/search?term=%@&limit=200&entity=%@",escapedSearchText, entityName)
+    
     let url = NSURL(string: urlString)
     return url!
   }
-//    MARK: 获取json  string
-  func performStoreRequestWithURL(url: NSURL) -> String? {
-    var error: NSError?
-    if let resultString = String(contentsOfURL: url, encoding: NSUTF8StringEncoding, error: &error) {
-      return resultString
-    } else if let error = error {
-      println("Download Error: \(error)")
-    } else {
-      println("Unknown Download Error")
-    }
-    return nil
-  }
+
   
-  func parseJSON(jsonString: String) -> [String: AnyObject]? {
-    if let data = jsonString.dataUsingEncoding(NSUTF8StringEncoding) {
+  func parseJSON(data: NSData) -> [String: AnyObject]? {
+
       var error: NSError?
       if let json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(0), error: &error) as? [String: AnyObject] {
         return json
@@ -73,7 +74,7 @@ class SearchViewController: UIViewController {
       } else {
         println("Unknown JSON Error")
       }
-    }
+
     return nil
   }
   
@@ -222,50 +223,73 @@ class SearchViewController: UIViewController {
     
     presentViewController(alert, animated: true, completion: nil)
   }
+    
+    
+//    选项卡发生改变
+    @IBAction func segmentChanged(sender: UISegmentedControl) {
+        
+        self.performSearch();
+        
+    }
+    /**
+    开始查找
+    */
+    func performSearch () {
+        if !searchBar.text.isEmpty {
+            searchBar.resignFirstResponder()
+            //             取消旧的请求
+            dataTask?.cancel()
+            isLoading = true
+            tableView.reloadData()
+            hasSearched = true
+            searchResults = [SearchResult]()
+            let url = self.urlWithSearchText(searchBar.text,category: segementControl.selectedSegmentIndex)
+            let session = NSURLSession.sharedSession()
+            dataTask = session.dataTaskWithURL(url, completionHandler: { data, response, error in
+                if let error = error  {
+                    println("error \(error)")
+                    
+                } else if let httpResponse = response as? NSHTTPURLResponse{
+                    if httpResponse.statusCode == 200 {
+                        if let dictionary = self.parseJSON(data) {
+                            self.searchResults = self.parseDictionary(dictionary)
+                            self.searchResults.sort(<)
+                            dispatch_async(dispatch_get_main_queue()) {
+                                self.isLoading = false
+                                self.tableView.reloadData()
+                            }
+                            return
+                        }
+                    }else {
+                        
+                        println("failer")
+                        if error.code == -999 {return}
+                    }
+                }
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.hasSearched = false
+                    self.isLoading = false
+                    self.tableView.reloadData()
+                    self.showNetworkError()
+                }
+            })
+            
+            //        开启
+            dataTask?.resume();
+        }
+
+    
+    
+    }
 }
 // MARK:  - searchBar delegate
 extension SearchViewController: UISearchBarDelegate {
-            //    MARK: 点击搜索
-  func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-    if !searchBar.text.isEmpty {
-      searchBar.resignFirstResponder()
-      isLoading = true
-        tableView.reloadData()
-      hasSearched = true
-      searchResults = [SearchResult]()
-      
-        
-//        ASYNC  GCD
-        let  queue = dispatch_get_global_queue(0, 0);
-        dispatch_async(queue, { () -> Void in
-                  let url = self.urlWithSearchText(searchBar.text)
-            
-                  if let jsonString = self.performStoreRequestWithURL(url) {
-                    if let dictionary = self.parseJSON(jsonString) {
-                      self.searchResults = self.parseDictionary(dictionary)
-                      self.searchResults.sort(<)
-                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                            self.isLoading = false
-                            self.tableView.reloadData()
-                        })
-                       
-                      return
-                    }
-                  }
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.showNetworkError()
-                
-            })
-        })
-        
-        
-        
-        
-
-
-    
+    //    MARK: 点击搜索
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        self.performSearch()
     }
-  }
+    
+    
         //    MARK searchBar 的状态栏上移
   func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
     return .TopAttached
