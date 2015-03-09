@@ -26,7 +26,6 @@ extension UIImageView {
                 }
             }
         })
-        
         downloadTask.resume()
         return downloadTask
     }

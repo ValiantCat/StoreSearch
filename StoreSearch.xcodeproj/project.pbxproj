@@ -17,6 +17,11 @@
 		7B3CAAF719DD66B700D2D8F7 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3CAAF619DD66B700D2D8F7 /* SearchResultCell.swift */; };
 		7B3CAAF919DD6AEA00D2D8F7 /* NothingFoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B3CAAF819DD6AEA00D2D8F7 /* NothingFoundCell.xib */; };
 		CE02CA0B1AAAACA400C8E0E8 /* UIImageView+DownloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE02CA0A1AAAACA400C8E0E8 /* UIImageView+DownloadImage.swift */; };
+		CE3083871AAD7A44007BD918 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3083861AAD7A44007BD918 /* GradientView.swift */; };
+		CE3083891AAD7BED007BD918 /* BounceAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3083881AAD7BED007BD918 /* BounceAnimationController.swift */; };
+		CE30838B1AAD7F51007BD918 /* SlideOutAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30838A1AAD7F51007BD918 /* SlideOutAnimationController.swift */; };
+		CEF167FD1AAD42CB00581A90 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF167FC1AAD42CB00581A90 /* DetailViewController.swift */; };
+		CEF167FF1AAD461900581A90 /* DimmingPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF167FE1AAD461900581A90 /* DimmingPresentationController.swift */; };
 		CEF992071AA9A40D00D03E86 /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEF992061AA9A40D00D03E86 /* LoadingCell.xib */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +50,11 @@
 		7B3CAAF619DD66B700D2D8F7 /* SearchResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		7B3CAAF819DD6AEA00D2D8F7 /* NothingFoundCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NothingFoundCell.xib; sourceTree = "<group>"; };
 		CE02CA0A1AAAACA400C8E0E8 /* UIImageView+DownloadImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+DownloadImage.swift"; sourceTree = "<group>"; };
+		CE3083861AAD7A44007BD918 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		CE3083881AAD7BED007BD918 /* BounceAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BounceAnimationController.swift; sourceTree = "<group>"; };
+		CE30838A1AAD7F51007BD918 /* SlideOutAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideOutAnimationController.swift; sourceTree = "<group>"; };
+		CEF167FC1AAD42CB00581A90 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		CEF167FE1AAD461900581A90 /* DimmingPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DimmingPresentationController.swift; sourceTree = "<group>"; };
 		CEF992061AA9A40D00D03E86 /* LoadingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,6 +108,11 @@
 				7B3CAAD019DC2A8B00D2D8F7 /* Supporting Files */,
 				CEF992061AA9A40D00D03E86 /* LoadingCell.xib */,
 				CE02CA0A1AAAACA400C8E0E8 /* UIImageView+DownloadImage.swift */,
+				CEF167FC1AAD42CB00581A90 /* DetailViewController.swift */,
+				CEF167FE1AAD461900581A90 /* DimmingPresentationController.swift */,
+				CE3083861AAD7A44007BD918 /* GradientView.swift */,
+				CE3083881AAD7BED007BD918 /* BounceAnimationController.swift */,
+				CE30838A1AAD7F51007BD918 /* SlideOutAnimationController.swift */,
 			);
 			path = StoreSearch;
 			sourceTree = "<group>";
@@ -230,10 +245,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B3CAAD519DC2A8B00D2D8F7 /* SearchViewController.swift in Sources */,
+				CEF167FF1AAD461900581A90 /* DimmingPresentationController.swift in Sources */,
 				7B3CAAF319DC468800D2D8F7 /* SearchResult.swift in Sources */,
 				7B3CAAF719DD66B700D2D8F7 /* SearchResultCell.swift in Sources */,
+				CE3083891AAD7BED007BD918 /* BounceAnimationController.swift in Sources */,
+				CEF167FD1AAD42CB00581A90 /* DetailViewController.swift in Sources */,
 				7B3CAAD319DC2A8B00D2D8F7 /* AppDelegate.swift in Sources */,
+				CE3083871AAD7A44007BD918 /* GradientView.swift in Sources */,
 				CE02CA0B1AAAACA400C8E0E8 /* UIImageView+DownloadImage.swift in Sources */,
+				CE30838B1AAD7F51007BD918 /* SlideOutAnimationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

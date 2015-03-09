@@ -319,7 +319,18 @@ extension SearchViewController: UITableViewDataSource {
 extension SearchViewController: UITableViewDelegate {
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    performSegueWithIdentifier("ShowDetail", sender: indexPath)
   }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ShowDetail" {
+            let detailVc = segue.destinationViewController as DetailViewController
+            let indexPath = sender as NSIndexPath
+            let searchResult = self.searchResults[indexPath.row]
+            detailVc.searchResult = searchResult
+        
+        }
+    }
   
   func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
     if searchResults.count == 0 || isLoading{
