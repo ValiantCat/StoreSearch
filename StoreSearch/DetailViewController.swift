@@ -19,6 +19,12 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var genreLabel: UILabel!
     @IBOutlet weak var priceButton: UIButton!
 
+    enum AnimationStyle {  //动画类型
+        case Slide
+        case Fade
+    }
+    var dismissAnimationStyle = AnimationStyle.Fade
+    
     var searchResult:SearchResult!
     var downloadTask:NSURLSessionDownloadTask?
     override func viewDidLoad() {
@@ -71,6 +77,7 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func close(){
+            dismissAnimationStyle  = .Slide
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     @IBAction func openInAppStore(){
@@ -105,7 +112,14 @@ extension DetailViewController :UIViewControllerTransitioningDelegate {
     }
     //   开始关闭动画的动画控制器
     func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-         return SlideOutAnimationController()
+
+            
+        switch dismissAnimationStyle {
+        case .Slide:
+            return SlideOutAnimationController()
+        case .Fade:
+            return FadeOutAnimationController()
+        }
     }
 
 }

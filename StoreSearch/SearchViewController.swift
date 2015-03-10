@@ -18,6 +18,8 @@ class SearchViewController: UIViewController {
   var hasSearched = false
   var isLoading = false
   var dataTask:NSURLSessionDataTask?
+    
+  var landscapeViewController:LandscapeViewController?
   struct TableViewCellIdentifiers {
     static let searchResultCell = "SearchResultCell"
     static let nothingFoundCell = "NothingFoundCell"
@@ -38,6 +40,8 @@ class SearchViewController: UIViewController {
     cellNib = UINib(nibName: TableViewCellIdentifiers.loadingCell, bundle: nil)
     tableView.registerNib(cellNib, forCellReuseIdentifier: TableViewCellIdentifiers.loadingCell)
     searchBar.becomeFirstResponder()
+    
+    tableView.tableFooterView = UIView(frame: CGRect.zeroRect)
   }
 
   override func didReceiveMemoryWarning() {
@@ -339,4 +343,69 @@ extension SearchViewController: UITableViewDelegate {
       return indexPath
     }
   }
+}
+//MARK ： - 横屏时操作  ios8新特性
+extension SearchViewController {
+  
+    override func willTransitionToTraitCollection(newCollection: UITraitCollection, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        super.willTransitionToTraitCollection(newCollection, withTransitionCoordinator: coordinator)
+        switch newCollection.verticalSizeClass {
+        case .Compact:  //是横屏的
+            showLandscapeViewWithCoordinator(coordinator)
+        case .Regular, .Unspecified: //竖屏
+            hideLandscapeViewWithCoordinator(coordinator)
+        }
+        
+    }
+    
+    func  showLandscapeViewWithCoordinator(coordinator: UIViewControllerTransitionCoordinator) {
+        precondition(landscapeViewController == nil)
+        landscapeViewController = storyboard!.instantiateViewControllerWithIdentifier("LandscapeViewController") as? LandscapeViewController
+        if let controller = landscapeViewController {
+//           赋值  传递数据
+            controller.searchResults = self.searchResults
+            controller.view.frame = self.view.bounds
+            controller.view.alpha = 0
+            self.view.addSubview(controller.view)
+            self.addChildViewController(controller)
+            coordinator.animateAlongsideTransition({ (_ ) -> Void in
+                controller.view.alpha = 1
+                self.view.endEditing(true)
+                if self.presentedViewController != nil {
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                }
+            
+            }, completion: { (_) -> Void in
+                
+                //            控制器添加到上面 而不是销毁下面的
+                controller.didMoveToParentViewController(self)
+            })
+            
+            
+
+        
+        }
+    
+    }
+    func hideLandscapeViewWithCoordinator(
+        coordinator: UIViewControllerTransitionCoordinator) {
+        if let controller = landscapeViewController {
+             controller.willMoveToParentViewController(nil)
+            coordinator.animateAlongsideTransition({ (_) -> Void in
+             controller.view.alpha = 0
+            }, completion: { (_) -> Void in
+                controller.view.removeFromSuperview()
+                controller.removeFromParentViewController()
+               self.landscapeViewController = nil
+                
+            })
+            
+           
+        }
+        
+    }
+//    这是ios8之前处理方法
+//    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+    
+//    }
 }

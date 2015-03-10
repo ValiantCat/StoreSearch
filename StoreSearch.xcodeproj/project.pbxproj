@@ -20,6 +20,8 @@
 		CE3083871AAD7A44007BD918 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3083861AAD7A44007BD918 /* GradientView.swift */; };
 		CE3083891AAD7BED007BD918 /* BounceAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3083881AAD7BED007BD918 /* BounceAnimationController.swift */; };
 		CE30838B1AAD7F51007BD918 /* SlideOutAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30838A1AAD7F51007BD918 /* SlideOutAnimationController.swift */; };
+		CE7058E21AAEE86A004A9BAE /* LandscapeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7058E11AAEE86A004A9BAE /* LandscapeViewController.swift */; };
+		CE7058E41AAEF59A004A9BAE /* FadeOutAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7058E31AAEF59A004A9BAE /* FadeOutAnimationController.swift */; };
 		CEF167FD1AAD42CB00581A90 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF167FC1AAD42CB00581A90 /* DetailViewController.swift */; };
 		CEF167FF1AAD461900581A90 /* DimmingPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF167FE1AAD461900581A90 /* DimmingPresentationController.swift */; };
 		CEF992071AA9A40D00D03E86 /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEF992061AA9A40D00D03E86 /* LoadingCell.xib */; };
@@ -53,6 +55,8 @@
 		CE3083861AAD7A44007BD918 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		CE3083881AAD7BED007BD918 /* BounceAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BounceAnimationController.swift; sourceTree = "<group>"; };
 		CE30838A1AAD7F51007BD918 /* SlideOutAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideOutAnimationController.swift; sourceTree = "<group>"; };
+		CE7058E11AAEE86A004A9BAE /* LandscapeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandscapeViewController.swift; sourceTree = "<group>"; };
+		CE7058E31AAEF59A004A9BAE /* FadeOutAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FadeOutAnimationController.swift; sourceTree = "<group>"; };
 		CEF167FC1AAD42CB00581A90 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		CEF167FE1AAD461900581A90 /* DimmingPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DimmingPresentationController.swift; sourceTree = "<group>"; };
 		CEF992061AA9A40D00D03E86 /* LoadingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
@@ -113,6 +117,8 @@
 				CE3083861AAD7A44007BD918 /* GradientView.swift */,
 				CE3083881AAD7BED007BD918 /* BounceAnimationController.swift */,
 				CE30838A1AAD7F51007BD918 /* SlideOutAnimationController.swift */,
+				CE7058E11AAEE86A004A9BAE /* LandscapeViewController.swift */,
+				CE7058E31AAEF59A004A9BAE /* FadeOutAnimationController.swift */,
 			);
 			path = StoreSearch;
 			sourceTree = "<group>";
@@ -246,9 +252,11 @@
 			files = (
 				7B3CAAD519DC2A8B00D2D8F7 /* SearchViewController.swift in Sources */,
 				CEF167FF1AAD461900581A90 /* DimmingPresentationController.swift in Sources */,
+				CE7058E41AAEF59A004A9BAE /* FadeOutAnimationController.swift in Sources */,
 				7B3CAAF319DC468800D2D8F7 /* SearchResult.swift in Sources */,
 				7B3CAAF719DD66B700D2D8F7 /* SearchResultCell.swift in Sources */,
 				CE3083891AAD7BED007BD918 /* BounceAnimationController.swift in Sources */,
+				CE7058E21AAEE86A004A9BAE /* LandscapeViewController.swift in Sources */,
 				CEF167FD1AAD42CB00581A90 /* DetailViewController.swift in Sources */,
 				7B3CAAD319DC2A8B00D2D8F7 /* AppDelegate.swift in Sources */,
 				CE3083871AAD7A44007BD918 /* GradientView.swift in Sources */,
@@ -369,6 +377,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = StoreSearch/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -379,6 +388,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = StoreSearch/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
