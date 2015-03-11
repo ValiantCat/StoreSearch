@@ -109,13 +109,13 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="3dh-pi-LRt">
                                         <rect key="frame" x="10" y="117" width="43.5" height="19.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sMy-iP-vy2">
                                         <rect key="frame" x="10" y="140" width="76" height="17"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="orG-Vm-c2K">
@@ -127,7 +127,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kind Value" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LuJ-Dt-0Ic">
                                         <rect key="frame" x="57" y="165" width="54.5" height="13.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Genre:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YK7-rk-Jiy">
@@ -139,7 +139,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Genre Value" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QBp-LE-h4B">
                                         <rect key="frame" x="57" y="182" width="62" height="13.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AKW-JA-Fbg">
@@ -236,15 +236,19 @@
                     <connections>
                         <outlet property="pageControl" destination="lrR-Xc-a4i" id="VKt-P3-d7S"/>
                         <outlet property="scrollView" destination="pCU-lG-FKh" id="BTf-kX-0rl"/>
+                        <segue destination="I1z-wu-HkH" kind="presentation" identifier="ShowDetail" id="LoG-4t-Fbj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eah-rz-Egn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1301" y="1099"/>
+            <point key="canvasLocation" x="541" y="923"/>
         </scene>
     </scenes>
     <resources>
         <image name="CloseButton" width="15" height="15"/>
         <image name="PriceButton" width="11" height="24"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="LoG-4t-Fbj"/>
+    </inferredMetricsTieBreakers>
 </document>

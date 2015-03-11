@@ -11,7 +11,7 @@ import UIKit
 class LandscapeViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
-    
+      var search: Search!
       var searchResults = [SearchResult]()
     private var firstTime = true  //私有变量
   private var downloadTasks = [NSURLSessionDownloadTask]()
@@ -52,16 +52,69 @@ class LandscapeViewController: UIViewController {
         pageControl.frame = CGRect(x: 0, y: view.frame.size.height - pageControl.frame.size.height, width: view.frame.size.width, height: pageControl.frame.size.height)
         if firstTime {
             firstTime = false
-            tileButtons(searchResults)
+            
+            switch search.state {
+            case .NotSearchedYet:
+                break
+            case .Loading:
+                showSpinner()
+            case .NoResults:
+                showNothingFoundLabel()
+            case .Results(let list):
+                tileButtons(list)
+
         }
     }
     
     
     
+        }
     
     
+    private func showSpinner() {
+        let spinner = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+        spinner.center = CGPoint(x: CGRectGetMidX(scrollView.bounds) + 0.5, y: CGRectGetMidY(scrollView.bounds) + 0.5)
+        spinner.tag = 1000
+        view.addSubview(spinner)
+        spinner.startAnimating()
+    }
     
+    private func hideSpinner() {
+        view.viewWithTag(1000)?.removeFromSuperview()
+    }
+    
+    func searchResultsReceived() {
+        hideSpinner()
+        
+        switch search.state {
+        case .NotSearchedYet, .Loading:
+            break
+        case .NoResults:
+            showNothingFoundLabel()
+        case .Results(let list):
+            tileButtons(list)
+        }
+    }
+    private func showNothingFoundLabel() {
+        let label = UILabel(frame: CGRect.zeroRect)
+        label.text = "Nothing Found"
+        label.backgroundColor = UIColor.clearColor()
+        label.textColor = UIColor.whiteColor()
+        
+        label.sizeToFit()
+        
+        var rect = label.frame
+        rect.size.width = ceil(rect.size.width/2) * 2    // make even
+        rect.size.height = ceil(rect.size.height/2) * 2  // make even
+        label.frame = rect
+        
+        label.center = CGPoint(x: CGRectGetMidX(scrollView.bounds), y: CGRectGetMidY(scrollView.bounds))
+        
+        view.addSubview(label)
+    }
+
     private func tileButtons(searchResults: [SearchResult]) {
+       
         var columnsPerPage = 5
         var rowsPerPage = 3
         var itemWidth: CGFloat = 96
@@ -109,6 +162,9 @@ class LandscapeViewController: UIViewController {
             
             button.frame = CGRect(x: x + paddingHorz, y: marginY + CGFloat(row)*itemHeight + paddingVert, width: buttonWidth, height: buttonHeight)
             
+            button.tag = 2000 + index
+            button.addTarget(self, action: Selector("buttonPressed:"), forControlEvents: .TouchUpInside)
+            
             scrollView.addSubview(button)
             
             downloadImageForSearchResult(searchResult, andPlaceOnButton: button)
@@ -135,8 +191,12 @@ class LandscapeViewController: UIViewController {
         
         pageControl.numberOfPages = numPages
         pageControl.currentPage = 0
+    
     }
     
+    func buttonPressed(sender: UIButton) {
+        performSegueWithIdentifier("ShowDetail", sender: sender)
+    }
     private func downloadImageForSearchResult(searchResult: SearchResult, andPlaceOnButton button: UIButton) {
         if let url = NSURL(string: searchResult.artworkURL60) {
             
@@ -168,7 +228,18 @@ class LandscapeViewController: UIViewController {
             },
             completion: nil)
     }
-
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ShowDetail" {
+            switch search.state {
+            case .Results(let list):
+                let detailViewController = segue.destinationViewController as DetailViewController
+                let searchResult = list[sender!.tag - 2000]
+                detailViewController.searchResult = searchResult
+            default:
+                break
+            }
+        }
+    }
 }
 
 

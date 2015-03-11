@@ -22,6 +22,7 @@
 		CE30838B1AAD7F51007BD918 /* SlideOutAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30838A1AAD7F51007BD918 /* SlideOutAnimationController.swift */; };
 		CE7058E21AAEE86A004A9BAE /* LandscapeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7058E11AAEE86A004A9BAE /* LandscapeViewController.swift */; };
 		CE7058E41AAEF59A004A9BAE /* FadeOutAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7058E31AAEF59A004A9BAE /* FadeOutAnimationController.swift */; };
+		CEDC25101AAFEEAC0037108A /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDC250F1AAFEEAC0037108A /* Search.swift */; };
 		CEF167FD1AAD42CB00581A90 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF167FC1AAD42CB00581A90 /* DetailViewController.swift */; };
 		CEF167FF1AAD461900581A90 /* DimmingPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF167FE1AAD461900581A90 /* DimmingPresentationController.swift */; };
 		CEF992071AA9A40D00D03E86 /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEF992061AA9A40D00D03E86 /* LoadingCell.xib */; };
@@ -57,6 +58,7 @@
 		CE30838A1AAD7F51007BD918 /* SlideOutAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideOutAnimationController.swift; sourceTree = "<group>"; };
 		CE7058E11AAEE86A004A9BAE /* LandscapeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandscapeViewController.swift; sourceTree = "<group>"; };
 		CE7058E31AAEF59A004A9BAE /* FadeOutAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FadeOutAnimationController.swift; sourceTree = "<group>"; };
+		CEDC250F1AAFEEAC0037108A /* Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		CEF167FC1AAD42CB00581A90 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		CEF167FE1AAD461900581A90 /* DimmingPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DimmingPresentationController.swift; sourceTree = "<group>"; };
 		CEF992061AA9A40D00D03E86 /* LoadingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				7B3CAAD619DC2A8B00D2D8F7 /* Main.storyboard */,
 				7B3CAAF819DD6AEA00D2D8F7 /* NothingFoundCell.xib */,
 				7B3CAAF219DC468800D2D8F7 /* SearchResult.swift */,
+				CEDC250F1AAFEEAC0037108A /* Search.swift */,
 				7B3CAAF619DD66B700D2D8F7 /* SearchResultCell.swift */,
 				7B3CAAF419DD31F900D2D8F7 /* SearchResultCell.xib */,
 				7B3CAAD419DC2A8B00D2D8F7 /* SearchViewController.swift */,
@@ -250,6 +253,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEDC25101AAFEEAC0037108A /* Search.swift in Sources */,
 				7B3CAAD519DC2A8B00D2D8F7 /* SearchViewController.swift in Sources */,
 				CEF167FF1AAD461900581A90 /* DimmingPresentationController.swift in Sources */,
 				CE7058E41AAEF59A004A9BAE /* FadeOutAnimationController.swift in Sources */,
