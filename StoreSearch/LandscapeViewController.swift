@@ -157,7 +157,7 @@ class LandscapeViewController: UIViewController {
         
         for (index, searchResult) in enumerate(searchResults) {
             
-            let button = UIButton.buttonWithType(.Custom) as UIButton
+            let button = UIButton.buttonWithType(.Custom) as! UIButton
             button.setBackgroundImage(UIImage(named: "LandscapeButton"), forState: .Normal)
             
             button.frame = CGRect(x: x + paddingHorz, y: marginY + CGFloat(row)*itemHeight + paddingVert, width: buttonWidth, height: buttonHeight)
@@ -232,7 +232,7 @@ class LandscapeViewController: UIViewController {
         if segue.identifier == "ShowDetail" {
             switch search.state {
             case .Results(let list):
-                let detailViewController = segue.destinationViewController as DetailViewController
+                let detailViewController = segue.destinationViewController as! DetailViewController
                 let searchResult = list[sender!.tag - 2000]
                 detailViewController.searchResult = searchResult
             default:

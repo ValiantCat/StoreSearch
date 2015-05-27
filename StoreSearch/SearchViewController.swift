@@ -130,18 +130,18 @@ extension SearchViewController: UITableViewDataSource {
         fatalError("Should never get here")
         
     case .Loading:
-        let cell = tableView.dequeueReusableCellWithIdentifier(TableViewCellIdentifiers.loadingCell, forIndexPath:indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(TableViewCellIdentifiers.loadingCell, forIndexPath:indexPath) as! UITableViewCell
         
-        let spinner = cell.viewWithTag(100) as UIActivityIndicatorView
+        let spinner = cell.viewWithTag(100) as! UIActivityIndicatorView
         spinner.startAnimating()
         
         return cell
         
     case .NoResults:
-        return tableView.dequeueReusableCellWithIdentifier(TableViewCellIdentifiers.nothingFoundCell, forIndexPath: indexPath) as UITableViewCell
+        return tableView.dequeueReusableCellWithIdentifier(TableViewCellIdentifiers.nothingFoundCell, forIndexPath: indexPath) as! UITableViewCell
         
     case .Results(let list):
-        let cell = tableView.dequeueReusableCellWithIdentifier(TableViewCellIdentifiers.searchResultCell, forIndexPath: indexPath) as SearchResultCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(TableViewCellIdentifiers.searchResultCell, forIndexPath: indexPath) as! SearchResultCell
         
         let searchResult = list[indexPath.row]
         cell.configureForSearchResult(searchResult)
@@ -161,8 +161,8 @@ extension SearchViewController: UITableViewDelegate {
         if segue.identifier == "ShowDetail" {
             switch search.state {
             case .Results(let list):
-                let detailViewController = segue.destinationViewController as DetailViewController
-                let indexPath = sender as NSIndexPath
+                let detailViewController = segue.destinationViewController as! DetailViewController
+                let indexPath = sender as! NSIndexPath
                 let searchResult = list[indexPath.row]
                 detailViewController.searchResult = searchResult
             default:
