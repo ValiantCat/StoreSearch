@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>50F92243-6972-454D-A9BB-27B8E6F6A852</string>
+	<key>IDESourceControlProjectName</key>
+	<string>StoreSearch</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>DFBFE00E43F73EFD96F30777815A184756F039E1</key>
+		<string>https://github.com/aiqiuqiu/StoreSearch.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>StoreSearch.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>DFBFE00E43F73EFD96F30777815A184756F039E1</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/aiqiuqiu/StoreSearch.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>DFBFE00E43F73EFD96F30777815A184756F039E1</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>DFBFE00E43F73EFD96F30777815A184756F039E1</string>
+			<key>IDESourceControlWCCName</key>
+			<string>StoreSearch</string>
+		</dict>
+	</array>
+</dict>
+</plist>
