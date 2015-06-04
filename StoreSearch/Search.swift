@@ -90,7 +90,7 @@ class Search {
         let countryCode = locale.objectForKey(NSLocaleCountryCode) as! String
         let escapedSearchText = searchText.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
         
-      let urlString = String(format: "http://itunes.apple.com/search?term=%@&limit=200&entity=%@&lang=%@&country=%@", escapedSearchText, entityName, language, countryCode)
+      let urlString = String(format: "http://itunes.apple.com/search?term=%@&limit=200&entity=%@&language=%@&country=%@", escapedSearchText, entityName, language, countryCode)
         let url = NSURL(string: urlString)
         return url!
     }
